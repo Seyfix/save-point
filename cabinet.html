@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SAVE POINT — игровая библиотека: подборка видеоигр по жанрам с описаниями и личной коллекцией.">
+    <title>Личный кабинет — SAVE POINT</title>
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========== ШАПКА ========== -->
+    <header class="site-header">
+        <div class="wrap site-header__inner">
+            <a href="index.html" class="brand">
+                <img src="img/logo.svg" alt="Логотип SAVE POINT — геймпад" width="40" height="40">
+                <span class="brand__text">SAVE<em>POINT</em></span>
+            </a>
+
+            <nav class="menu" id="menu" aria-label="Основное меню">
+                <a href="index.html" class="menu__link">Главная</a>
+                <a href="index.html#library" class="menu__link">Библиотека</a>
+                <a href="index.html#genres" class="menu__link">О жанрах</a>
+                <a href="index.html#faq" class="menu__link">FAQ</a>
+                <a href="#contacts" class="menu__link">Контакты</a>
+                <a href="cabinet.html" class="menu__link only-user is-current">Мои игры</a>
+            </nav>
+
+            <div class="header-user">
+                <a href="auth.html" class="button button--ghost only-guest">Войти</a>
+                <a href="cabinet.html" class="header-user__name only-user" id="headerName"></a>
+                <button type="button" class="button button--ghost only-user" data-action="logout">Выйти</button>
+                <button type="button" class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-cabinet">
+        <div class="wrap">
+
+            <!-- ===== Если пользователь НЕ вошёл ===== -->
+            <section class="locked" id="locked" hidden>
+                <div class="locked__icon">🔒</div>
+                <h1>Доступ закрыт</h1>
+                <p>Раздел «Мои игры» доступен только после входа в аккаунт.</p>
+                <div class="locked__actions">
+                    <a href="auth.html" class="button">Войти</a>
+                    <a href="auth.html#register" class="button button--ghost">Регистрация</a>
+                </div>
+            </section>
+
+            <!-- ===== Если пользователь вошёл ===== -->
+            <div id="cabinet" hidden>
+                <h1 class="heading">Личный кабинет</h1>
+
+                <div class="cabinet-layout">
+                    <aside class="profile">
+                        <div class="profile__avatar" id="profileLetter">?</div>
+                        <h2 class="profile__name" id="profileName"></h2>
+
+                        <dl class="profile__data">
+                            <dt>Email</dt>
+                            <dd id="profileEmail"></dd>
+                            <dt>Дата регистрации</dt>
+                            <dd id="profileDate"></dd>
+                        </dl>
+
+                        <form class="rename" id="renameForm" novalidate>
+                            <div class="form-field">
+                                <label for="renameInput">Сменить имя</label>
+                                <input type="text" id="renameInput" placeholder="Новое имя">
+                                <span class="form-field__error"></span>
+                            </div>
+                            <button type="submit" class="button button--small">Сохранить</button>
+                        </form>
+
+                        <button type="button" class="button button--ghost button--wide" data-action="logout">Выйти из аккаунта</button>
+                    </aside>
+
+                    <section class="library">
+                        <h2 class="library__title">💾 Мои игры</h2>
+
+                        <div class="stats">
+                            <div class="stats__item"><b id="statTotal">0</b><span>в коллекции</span></div>
+                            <div class="stats__item"><b id="statPlaying">0</b><span>играю</span></div>
+                            <div class="stats__item"><b id="statDone">0</b><span>пройдено</span></div>
+                        </div>
+
+                        <div id="libraryList"></div>
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ========== ПОДВАЛ ========== -->
+    <footer class="site-footer" id="contacts">
+        <div class="wrap site-footer__grid">
+            <div>
+                <a href="index.html" class="brand">
+                    <img src="img/logo.svg" alt="Логотип SAVE POINT" width="36" height="36">
+                    <span class="brand__text">SAVE<em>POINT</em></span>
+                </a>
+                <p class="site-footer__about">Игровая библиотека: подборки, описания и личная коллекция. Учебный проект.</p>
+                <div class="social">
+                    <a href="#" aria-label="ВКонтакте">vk</a>
+                    <a href="#" aria-label="Telegram">tg</a>
+                    <a href="#" aria-label="Twitch">tw</a>
+                </div>
+            </div>
+
+            <nav aria-label="Разделы сайта">
+                <h3>Разделы</h3>
+                <ul class="site-footer__list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="index.html#library">Библиотека игр</a></li>
+                    <li><a href="index.html#genres">О жанрах</a></li>
+                    <li><a href="cabinet.html">Мои игры</a></li>
+                </ul>
+            </nav>
+
+            <div>
+                <h3>Контакты</h3>
+                <ul class="site-footer__list">
+                    <li>📍 Москва, ул. Пиксельная, 8</li>
+                    <li>📞 +7 (900) 123-45-67</li>
+                    <li>✉️ hello@savepoint.example</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <p class="wrap site-footer__copy">© 2026 SAVE POINT · Бобок С.С., СИП-313/24</p>
+    </footer>
+
+    <script src="js/games.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

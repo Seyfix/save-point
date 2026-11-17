@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SAVE POINT — игровая библиотека: подборка видеоигр по жанрам с описаниями и личной коллекцией.">
+    <title>SAVE POINT — игровая библиотека</title>
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========== ШАПКА ========== -->
+    <header class="site-header">
+        <div class="wrap site-header__inner">
+            <a href="index.html" class="brand">
+                <img src="img/logo.svg" alt="Логотип SAVE POINT — геймпад" width="40" height="40">
+                <span class="brand__text">SAVE<em>POINT</em></span>
+            </a>
+
+            <nav class="menu" id="menu" aria-label="Основное меню">
+                <a href="index.html" class="menu__link is-current">Главная</a>
+                <a href="#library" class="menu__link">Библиотека</a>
+                <a href="#genres" class="menu__link">О жанрах</a>
+                <a href="#faq" class="menu__link">FAQ</a>
+                <a href="#contacts" class="menu__link">Контакты</a>
+                <a href="cabinet.html" class="menu__link only-user">Мои игры</a>
+            </nav>
+
+            <div class="header-user">
+                <a href="auth.html" class="button button--ghost only-guest">Войти</a>
+                <a href="cabinet.html" class="header-user__name only-user" id="headerName"></a>
+                <button type="button" class="button button--ghost only-user" data-action="logout">Выйти</button>
+                <button type="button" class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- ========== HERO ========== -->
+        <section class="hero">
+            <canvas class="hero__canvas" id="starsCanvas" aria-hidden="true"></canvas>
+            <div class="wrap hero__inner">
+                <div class="hero__content">
+                    <p class="hero__kicker">▶ Игровая библиотека</p>
+                    <h1 class="hero__title">Во что поиграть <span>сегодня вечером?</span></h1>
+                    <p class="hero__lead">
+                        SAVE POINT — подборка лучших видеоигр разных жанров: от уютных симуляторов
+                        до хардкорных платформеров. У каждой игры — жанр, студия, режим и сколько
+                        часов займёт прохождение. Собирайте свою коллекцию и отмечайте прогресс.
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#library" class="button">Смотреть игры</a>
+                        <a href="auth.html#register" class="button button--ghost only-guest">Создать аккаунт</a>
+                    </div>
+                </div>
+                <img class="hero__picture" src="img/hero.svg" alt="Геймпад, пиксельное сердце и монета" width="440" height="380">
+            </div>
+        </section>
+
+        <!-- ========== СЛАЙДЕР ========== -->
+        <section class="block" aria-label="Подборки недели">
+            <div class="wrap">
+                <div class="carousel" id="carousel">
+                    <div class="carousel__track" id="carouselTrack">
+
+                        <article class="carousel__slide slide--violet">
+                            <div class="carousel__icon">⚔️</div>
+                            <div>
+                                <p class="carousel__tag">Выбор недели</p>
+                                <h2 class="carousel__title">The Witcher 3: Wild Hunt</h2>
+                                <p>Огромный мир, сотни квестов и решения, у которых есть последствия. Классика ролевых игр.</p>
+                            </div>
+                        </article>
+
+                        <article class="carousel__slide slide--cyan">
+                            <div class="carousel__icon">🧸</div>
+                            <div>
+                                <p class="carousel__tag">Подборка</p>
+                                <h2 class="carousel__title">Играем вдвоём</h2>
+                                <p>It Takes Two, Portal 2 и Stardew Valley — игры, которые лучше проходить с другом.</p>
+                            </div>
+                        </article>
+
+                        <article class="carousel__slide slide--pink">
+                            <div class="carousel__icon">🦋</div>
+                            <div>
+                                <p class="carousel__tag">Инди</p>
+                                <h2 class="carousel__title">Маленькие студии — большие игры</h2>
+                                <p>Hollow Knight, Celeste и Hades сделали небольшие команды, а играют в них миллионы.</p>
+                            </div>
+                        </article>
+
+                        <article class="carousel__slide slide--green">
+                            <div class="carousel__icon">⏱️</div>
+                            <div>
+                                <p class="carousel__tag">Мало времени?</p>
+                                <h2 class="carousel__title">Пройти за выходные</h2>
+                                <p>Portal 2 и Celeste проходятся примерно за 8–10 часов и не надоедают ни на минуту.</p>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <button type="button" class="carousel__btn carousel__btn--prev" id="carouselPrev" aria-label="Предыдущий слайд">◀</button>
+                    <button type="button" class="carousel__btn carousel__btn--next" id="carouselNext" aria-label="Следующий слайд">▶</button>
+                    <div class="carousel__dots" id="carouselDots">
+                        <!-- точки создаются в main.js по числу слайдов -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== ПРЕИМУЩЕСТВА ========== -->
+        <section class="block">
+            <div class="wrap">
+                <h2 class="heading">Что умеет SAVE POINT</h2>
+                <div class="perks">
+                    <div class="perk reveal">
+                        <span class="perk__icon">🗂️</span>
+                        <h3>Жанры и поиск</h3>
+                        <p>Фильтр по жанрам, поиск по названию и студии, сортировка по году.</p>
+                    </div>
+                    <div class="perk reveal">
+                        <span class="perk__icon">⏳</span>
+                        <h3>Время прохождения</h3>
+                        <p>Сразу видно, хватит ли выходных или игра на весь месяц.</p>
+                    </div>
+                    <div class="perk reveal">
+                        <span class="perk__icon">💾</span>
+                        <h3>Своя коллекция</h3>
+                        <p>Добавляйте игры в «Мои игры» — они сохранятся в кабинете.</p>
+                    </div>
+                    <div class="perk reveal">
+                        <span class="perk__icon">🏆</span>
+                        <h3>Прогресс</h3>
+                        <p>Отмечайте статус: хочу пройти, играю или уже пройдено.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== БИБЛИОТЕКА (КАРТОЧКИ) ========== -->
+        <section class="block block--tinted" id="library">
+            <div class="wrap">
+                <h2 class="heading">Библиотека игр</h2>
+
+                <div class="catalog-tools">
+                    <div class="chips" id="genreChips">
+                        <!-- кнопки жанров создаются в main.js -->
+                    </div>
+
+                    <div class="catalog-tools__right">
+                        <div class="control">
+                            <label for="searchField">Поиск</label>
+                            <input type="search" id="searchField" placeholder="Название или студия">
+                        </div>
+                        <div class="control">
+                            <label for="sortSelect">Сортировка</label>
+                            <select id="sortSelect">
+                                <option value="title">По названию</option>
+                                <option value="new">Сначала новые</option>
+                                <option value="old">Сначала старые</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="catalog-count" id="catalogCount"></p>
+
+                <div class="game-grid" id="gameGrid">
+                    <!-- карточки строятся в main.js из массива GAMES -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== О ТЕМЕ: ЖАНРЫ ========== -->
+        <section class="block" id="genres">
+            <div class="wrap">
+                <h2 class="heading">Коротко о жанрах</h2>
+                <p class="intro">
+                    Жанр подсказывает, чем вы будете заниматься в игре. Если не знаете, с чего начать, —
+                    выберите жанр по настроению, а потом откройте библиотеку и включите фильтр.
+                </p>
+
+                <div class="genre-grid">
+                    <div class="genre-item reveal">
+                        <span class="genre-item__icon">🧙</span>
+                        <h3>RPG</h3>
+                        <p>Ролевые игры: развитие героя, сюжет, диалоги и выбор. Подходят тем, кто любит истории.</p>
+                    </div>
+                    <div class="genre-item reveal">
+                        <span class="genre-item__icon">🏃</span>
+                        <h3>Платформеры</h3>
+                        <p>Прыжки, точное управление и полоса препятствий. Проверяют реакцию и терпение.</p>
+                    </div>
+                    <div class="genre-item reveal">
+                        <span class="genre-item__icon">🧩</span>
+                        <h3>Головоломки</h3>
+                        <p>Нужно не быстро нажимать кнопки, а думать. Отлично тренируют логику.</p>
+                    </div>
+                    <div class="genre-item reveal">
+                        <span class="genre-item__icon">🏛️</span>
+                        <h3>Стратегии</h3>
+                        <p>Планирование, экономика и управление целыми государствами или армиями.</p>
+                    </div>
+                    <div class="genre-item reveal">
+                        <span class="genre-item__icon">🌾</span>
+                        <h3>Симуляторы и песочницы</h3>
+                        <p>Спокойные игры без жёсткой цели: строй, выращивай, исследуй в своём темпе.</p>
+                    </div>
+                    <div class="genre-item reveal">
+                        <span class="genre-item__icon">🔥</span>
+                        <h3>Экшен</h3>
+                        <p>Динамичные бои и быстрые решения. Короткие сессии, много адреналина.</p>
+                    </div>
+                </div>
+
+                <div class="tips reveal">
+                    <h3>🎮 Правила здорового гейминга</h3>
+                    <ul>
+                        <li>Делайте перерыв на 10 минут после каждого часа игры.</li>
+                        <li>Смотрите на возрастной рейтинг игры — он указан на странице в магазине.</li>
+                        <li>Покупайте игры в официальных магазинах: так вы поддерживаете разработчиков.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== FAQ ========== -->
+        <section class="block block--tinted" id="faq">
+            <div class="wrap wrap--narrow">
+                <h2 class="heading">Частые вопросы</h2>
+
+                <div class="accordion" id="accordion">
+                    <div class="accordion__item">
+                        <button type="button" class="accordion__head">Можно ли скачать игры с сайта?</button>
+                        <div class="accordion__body">
+                            <p>Нет. SAVE POINT — это справочник и личный список, а не магазин. Игры покупаются в официальных магазинах платформ.</p>
+                        </div>
+                    </div>
+                    <div class="accordion__item">
+                        <button type="button" class="accordion__head">С какой игры начать новичку?</button>
+                        <div class="accordion__body">
+                            <p>С Stardew Valley или Minecraft: в них нет жёсткого таймера и наказаний за ошибки. Для двоих — It Takes Two.</p>
+                        </div>
+                    </div>
+                    <div class="accordion__item">
+                        <button type="button" class="accordion__head">Что означает статус игры в кабинете?</button>
+                        <div class="accordion__body">
+                            <p>Это ваш прогресс: «Хочу пройти», «Играю» или «Пройдено». Статус можно поменять в любой момент.</p>
+                        </div>
+                    </div>
+                    <div class="accordion__item">
+                        <button type="button" class="accordion__head">Где хранятся мои данные?</button>
+                        <div class="accordion__body">
+                            <p>Это учебный проект без сервера: аккаунт и коллекция сохраняются только в вашем браузере (localStorage).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== МОДАЛЬНОЕ ОКНО «ПОДРОБНЕЕ» ========== -->
+    <div class="overlay" id="gameModal" hidden>
+        <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="dialogTitle">
+            <button type="button" class="dialog__close" data-close aria-label="Закрыть окно">×</button>
+            <div id="dialogBody"></div>
+        </div>
+    </div>
+
+    <!-- ========== ПОДВАЛ ========== -->
+    <footer class="site-footer" id="contacts">
+        <div class="wrap site-footer__grid">
+            <div>
+                <a href="index.html" class="brand">
+                    <img src="img/logo.svg" alt="Логотип SAVE POINT" width="36" height="36">
+                    <span class="brand__text">SAVE<em>POINT</em></span>
+                </a>
+                <p class="site-footer__about">Игровая библиотека: подборки, описания и личная коллекция. Учебный проект.</p>
+                <div class="social">
+                    <a href="#" aria-label="ВКонтакте">vk</a>
+                    <a href="#" aria-label="Telegram">tg</a>
+                    <a href="#" aria-label="Twitch">tw</a>
+                </div>
+            </div>
+
+            <nav aria-label="Разделы сайта">
+                <h3>Разделы</h3>
+                <ul class="site-footer__list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="#library">Библиотека игр</a></li>
+                    <li><a href="#genres">О жанрах</a></li>
+                    <li><a href="cabinet.html">Мои игры</a></li>
+                </ul>
+            </nav>
+
+            <div>
+                <h3>Контакты</h3>
+                <ul class="site-footer__list">
+                    <li>📍 Москва, ул. Пиксельная, 8</li>
+                    <li>📞 +7 (900) 123-45-67</li>
+                    <li>✉️ hello@savepoint.example</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3>Новые подборки</h3>
+                <form class="newsletter" id="newsletter" novalidate>
+                    <label for="newsletterEmail">Email для рассылки</label>
+                    <div class="newsletter__row">
+                        <input type="email" id="newsletterEmail" placeholder="name@mail.ru">
+                        <button type="submit" class="button button--small">OK</button>
+                    </div>
+                    <p class="newsletter__msg" id="newsletterMsg"></p>
+                </form>
+            </div>
+        </div>
+
+        <p class="wrap site-footer__copy">© 2026 SAVE POINT · Бобок С.С., СИП-313/24</p>
+    </footer>
+
+    <script src="js/games.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

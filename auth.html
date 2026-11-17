@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SAVE POINT — игровая библиотека: подборка видеоигр по жанрам с описаниями и личной коллекцией.">
+    <title>Вход и регистрация — SAVE POINT</title>
+    <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========== ШАПКА ========== -->
+    <header class="site-header">
+        <div class="wrap site-header__inner">
+            <a href="index.html" class="brand">
+                <img src="img/logo.svg" alt="Логотип SAVE POINT — геймпад" width="40" height="40">
+                <span class="brand__text">SAVE<em>POINT</em></span>
+            </a>
+
+            <nav class="menu" id="menu" aria-label="Основное меню">
+                <a href="index.html" class="menu__link">Главная</a>
+                <a href="index.html#library" class="menu__link">Библиотека</a>
+                <a href="index.html#genres" class="menu__link">О жанрах</a>
+                <a href="index.html#faq" class="menu__link">FAQ</a>
+                <a href="#contacts" class="menu__link">Контакты</a>
+                <a href="cabinet.html" class="menu__link only-user">Мои игры</a>
+            </nav>
+
+            <div class="header-user">
+                <a href="cabinet.html" class="header-user__name only-user" id="headerName"></a>
+                <button type="button" class="button button--ghost only-user" data-action="logout">Выйти</button>
+                <button type="button" class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-auth">
+        <div class="wrap">
+
+            <!-- ===== ВХОД ===== -->
+            <section class="auth-box" id="loginPanel">
+                <div class="auth-box__icon">🎮</div>
+                <h1 class="auth-box__title">Вход</h1>
+                <p class="auth-box__sub">Продолжите с того места, где остановились.</p>
+                <p class="auth-notice" id="authNotice" hidden></p>
+
+                <form id="loginForm" novalidate>
+                    <div class="form-field">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="name@mail.ru" autocomplete="email">
+                        <span class="form-field__error"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="loginPass">Пароль</label>
+                        <div class="password">
+                            <input type="password" id="loginPass" placeholder="Ваш пароль" autocomplete="current-password">
+                            <button type="button" class="eye" data-target="loginPass" aria-label="Показать пароль">👁</button>
+                        </div>
+                        <span class="form-field__error"></span>
+                    </div>
+
+                    <button type="submit" class="button button--wide">Войти</button>
+                </form>
+
+                <p class="auth-box__switch">Нет аккаунта? <a href="#register" data-open="register">Зарегистрироваться</a></p>
+                <p class="auth-box__hint">Тестовый вход: <b>test@test.ru</b> / <b>123456</b></p>
+            </section>
+
+            <!-- ===== РЕГИСТРАЦИЯ ===== -->
+            <section class="auth-box" id="registerPanel" hidden>
+                <div class="auth-box__icon">💾</div>
+                <h1 class="auth-box__title">Регистрация</h1>
+                <p class="auth-box__sub">Создайте аккаунт и собирайте свою коллекцию игр.</p>
+
+                <form id="registerForm" novalidate>
+                    <div class="form-field">
+                        <label for="regName">Имя или никнейм</label>
+                        <input type="text" id="regName" placeholder="Например, Сергей" autocomplete="nickname">
+                        <span class="form-field__error"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="regEmail">Email</label>
+                        <input type="email" id="regEmail" placeholder="name@mail.ru" autocomplete="email">
+                        <span class="form-field__error"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="regPass">Пароль</label>
+                        <div class="password">
+                            <input type="password" id="regPass" placeholder="Не короче 6 символов" autocomplete="new-password">
+                            <button type="button" class="eye" data-target="regPass" aria-label="Показать пароль">👁</button>
+                        </div>
+                        <span class="pass-meter" id="passMeter"></span>
+                        <span class="form-field__error"></span>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="regPass2">Повторите пароль</label>
+                        <div class="password">
+                            <input type="password" id="regPass2" placeholder="Ещё раз" autocomplete="new-password">
+                            <button type="button" class="eye" data-target="regPass2" aria-label="Показать пароль">👁</button>
+                        </div>
+                        <span class="form-field__error"></span>
+                    </div>
+
+                    <div class="form-field form-field--check">
+                        <input type="checkbox" id="regAgree">
+                        <label for="regAgree">Принимаю <a href="index.html#faq">правила сайта</a></label>
+                        <span class="form-field__error"></span>
+                    </div>
+
+                    <button type="submit" class="button button--wide">Создать аккаунт</button>
+                </form>
+
+                <p class="auth-box__switch">Уже есть аккаунт? <a href="#login" data-open="login">Войти</a></p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ========== ПОДВАЛ ========== -->
+    <footer class="site-footer" id="contacts">
+        <div class="wrap site-footer__grid">
+            <div>
+                <a href="index.html" class="brand">
+                    <img src="img/logo.svg" alt="Логотип SAVE POINT" width="36" height="36">
+                    <span class="brand__text">SAVE<em>POINT</em></span>
+                </a>
+                <p class="site-footer__about">Игровая библиотека: подборки, описания и личная коллекция. Учебный проект.</p>
+                <div class="social">
+                    <a href="#" aria-label="ВКонтакте">vk</a>
+                    <a href="#" aria-label="Telegram">tg</a>
+                    <a href="#" aria-label="Twitch">tw</a>
+                </div>
+            </div>
+
+            <nav aria-label="Разделы сайта">
+                <h3>Разделы</h3>
+                <ul class="site-footer__list">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="index.html#library">Библиотека игр</a></li>
+                    <li><a href="index.html#genres">О жанрах</a></li>
+                    <li><a href="cabinet.html">Мои игры</a></li>
+                </ul>
+            </nav>
+
+            <div>
+                <h3>Контакты</h3>
+                <ul class="site-footer__list">
+                    <li>📍 Москва, ул. Пиксельная, 8</li>
+                    <li>📞 +7 (900) 123-45-67</li>
+                    <li>✉️ hello@savepoint.example</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <p class="wrap site-footer__copy">© 2026 SAVE POINT · Бобок С.С., СИП-313/24</p>
+    </footer>
+
+    <script src="js/games.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
